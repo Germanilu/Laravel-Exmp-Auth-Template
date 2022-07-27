@@ -22,3 +22,12 @@ Route::get('/', function(){
 
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
+
+
+//Aqui creo un grupo con el middleware que controla el token 
+Route::group(
+    ['middleware' => 'jwt.auth'],
+    function () {
+        Route::get('/me', [AuthController::class, 'me']);
+    }
+);
