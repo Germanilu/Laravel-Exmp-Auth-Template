@@ -37,6 +37,9 @@ class AuthController extends Controller
             'password' => bcrypt($request->password)
         ]);
 
+        //Para hacer un attach del userrole
+        $user->roles()->attach(1);
+
         //Creo el token con encryptados los dastos de $user
         $token = JWTAuth::fromUser($user);
         return response()->json(compact('user', 'token'), 201);
