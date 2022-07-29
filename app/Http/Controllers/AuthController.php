@@ -11,6 +11,8 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class AuthController extends Controller
 {
 
+    const ROLE_USER = 1;
+
     //Create new user 
     public function register(Request $request)
     {
@@ -38,7 +40,7 @@ class AuthController extends Controller
         ]);
 
         //Para hacer un attach del userrole
-        $user->roles()->attach(1);
+        $user->roles()->attach(self::ROLE_USER);
 
         //Creo el token con encryptados los dastos de $user
         $token = JWTAuth::fromUser($user);
