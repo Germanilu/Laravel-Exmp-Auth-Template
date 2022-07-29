@@ -50,6 +50,9 @@ Route::group(
     function(){
         Route::post('/tasks',[TaskController::class,'createTask']);
         Route::get('/tasks',[TaskController::class,'getAllTasksByUserId']);
+        Route::get('/tasks/{id}',[TaskController::class,'getOneTasksById']);
+        Route::delete('tasks/{id}',[TaskController::class,'deleteOneTaskById']);
+        Route::put('tasks/{id}',[TaskController::class,'updateOneTaskById']);
 
     }
 );
